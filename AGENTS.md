@@ -18,6 +18,7 @@ Marketing site for **adblocked.ai**. The browser extension lives in a separate r
 
 ## Behavior
 
-- Install links (`[data-install]`) start out disabled and say "Extension link coming soon." To turn them on, set `chromeWebStoreUrl` in `site/config.js`. `app.js#verifiedStoreUrl` only accepts `https://chromewebstore.google.com/detail/<listing-name>/<id>` where `<id>` is 32 lowercase `a`–`p` characters. Any other value leaves the links disabled.
+- Install links are browser-specific (`data-install="chrome"` or `"firefox"`) and start disabled. Set `chromeWebStoreUrl` and/or `firefoxAddonsUrl` independently in `site/config.js` using verified marketplace listings. `configuredStoreUrl` checks HTTPS, official host, and listing path format; it does not verify ownership or existence. Unsupported or empty values leave only that browser disabled.
+- Run regression checks with `node tests/offline-logic-tests.cjs` and `node tests/comparison-tests.cjs` (Node is needed only for checks, not for the website).
 - Theme: light on first visit regardless of OS setting. The manual toggle is stored in localStorage key `adblocked-ai-theme`. `theme-init.js` loads synchronously in `<head>` to apply it before render and must stay there.
 - `comparison.js` drives the before/after slider (pointer, touch, keyboard). Without JS a static 50/50 split shows. The screenshots in `site/assets/chatgpt-{before,after}.webp` were copied from the Astro site.
