@@ -1,7 +1,11 @@
-// Paste the verified extension listing URL between the quotes when it exists.
-// Keep this empty to leave every install link safely disabled.
-// Accepted format: https://chromewebstore.google.com/detail/<listing-name>/<extension-id>
-// The extension ID must be the real 32-character ID (lowercase a–p).
+// Paste each verified extension listing URL between its quotes when it exists.
+// An empty or unsupported URL leaves only that browser's install links disabled.
+// Chrome: https://chromewebstore.google.com/detail/<listing-name>/<extension-id>
+// The Chrome extension ID must be the real 32-character ID (lowercase a–p).
+// Firefox: https://addons.mozilla.org/en-US/firefox/addon/<listing-slug>/
+// Firefox URLs without the locale segment are also accepted.
+// URL validation checks format only; it does not verify a listing's ownership or existence.
 window.ADBLOCKED_CONFIG = Object.freeze({
-  chromeWebStoreUrl: ''
+  chromeWebStoreUrl: '',
+  firefoxAddonsUrl: ''
 });
