@@ -235,9 +235,13 @@ svg {
   margin-top:10px;
   max-width:225px
 }
-/* Color enters from the page edge; the white copy panel cuts into it. */
+/* Broad, overlapping color planes carry the opening and closing content. */
 .hero {
-  padding-top:54px
+  background:var(--ochre-panel)
+}
+.hero-heading {
+  padding-top:54px;
+  padding-bottom:42px
 }
 .hero h1 {
   max-width:1160px;
@@ -253,54 +257,54 @@ svg {
 .hero-band {
   position:relative;
   isolation:isolate;
-  margin-top:40px
+  background:var(--sage-panel)
 }
 .hero-bottom {
-  position:relative
+  position:relative;
+  padding-block:34px 42px
 }
 .hero-copy {
-  width:65%;
-  min-height:340px;
-  padding:28px 60px 56px 0;
-  background:var(--bg)
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+  column-gap:80px;
+  align-items:start
 }
 .hero-description {
+  grid-column:1;
+  grid-row:1 / 4;
   max-width:650px;
   font-size:18px;
   line-height:1.7;
   color:var(--muted)
 }
 .hero-promise {
+  grid-column:2;
   font-size:18px;
   font-weight:600;
-  letter-spacing:-.25px;
-  margin-top:26px
+  letter-spacing:-.25px
+}
+.hero-copy .install-group {
+  grid-column:2;
+  margin-top:20px
 }
 .hero-color-field {
   position:absolute;
-  z-index:-1;
-  right:0;
-  top:25px;
-  bottom:0;
-  width:46%;
+  z-index:0;
+  inset:auto 0 0;
+  height:12px;
   background:var(--ochre);
-  overflow:hidden
+  overflow:hidden;
+  pointer-events:none
 }
 .hero-color-field::before {
   content:'';
   position:absolute;
-  left:23%;
-  top:42px;
-  right:0;
-  bottom:0;
+  inset:0 0 0 42%;
   background:var(--petrol)
 }
 .hero-color-field>span {
   position:absolute;
-  left:63%;
-  top:49%;
-  right:0;
-  bottom:0;
+  inset:0 0 0 81%;
   background:var(--clay)
 }
 /* Small text panels keep the middle sections open and readable. */
@@ -556,16 +560,19 @@ svg {
 .closing-section {
   position:relative;
   isolation:isolate;
-  background:var(--soft)
+  border-top:16px solid var(--petrol);
+  background:var(--ochre-panel)
 }
 .closing-inner {
   position:relative
 }
 .closing-copy {
   position:relative;
-  width:75%;
-  padding:58px 50px 58px 0;
-  background:var(--soft)
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+  padding:54px 0
 }
 .closing-copy h2 {
   font-size:clamp(38px,3.8vw,54px);
@@ -573,35 +580,36 @@ svg {
   letter-spacing:-.05em;
   line-height:1.08
 }
+.closing-copy .install-group {
+  margin:0
+}
 .closing-color-field {
   position:absolute;
-  z-index:-1;
-  right:0;
-  top:26px;
-  bottom:0;
-  width:36%;
-  background:var(--ochre);
-  overflow:hidden
+  z-index:0;
+  inset:auto 0 0;
+  height:12px;
+  background:var(--clay);
+  overflow:hidden;
+  pointer-events:none
 }
 .closing-color-field::before {
   content:'';
   position:absolute;
-  inset:34px 0 0 26%;
-  background:var(--petrol)
+  inset:0 25% 0 0;
+  background:var(--ochre)
 }
 .closing-color-field>span {
   position:absolute;
-  right:0;
-  top:47%;
-  bottom:13%;
-  width:36%;
-  background:var(--clay)
+  inset:0 0 0 75%;
+  background:var(--petrol)
 }
 .site-footer {
   display:flex;
   gap:28px;
   align-items:center;
-  min-height:130px
+  min-height:130px;
+  padding-inline:max(56px,calc((100% - 1280px)/2));
+  background:var(--sage-panel)
 }
 .footer-wordmark {
   font-size:15px
@@ -619,8 +627,8 @@ svg {
   font-size:17px
 }
 @media(min-width:1600px) {
-  .hero {
-    padding-top:74px
+  .hero-heading {
+    padding-top:70px
   }
 }
 @media(max-width:1150px) {
@@ -637,8 +645,8 @@ svg {
     margin-left:4px
   }
   .hero-copy {
-    width:69%;
-    padding-right:38px
+    column-gap:40px;
+    grid-template-columns:1.1fr 1fr
   }
   .hero-description {
     font-size:17px
@@ -667,19 +675,27 @@ svg {
   .principle h3 {
     font-size:19px
   }
+  .closing-copy {
+    gap:28px
+  }
+  .site-footer {
+    padding-inline:36px
+  }
 }
 @media(max-width:850px) {
   .hero-copy {
-    width:72%
+    grid-template-columns:1fr;
+    gap:0
   }
-  .hero-color-field {
-    width:39%
+  .hero-description {
+    grid-row:auto
   }
-  .hero-color-field::before {
-    left:18%
+  .hero-promise {
+    grid-column:1;
+    margin-top:24px
   }
-  .hero-color-field>span {
-    left:62%
+  .hero-copy .install-group {
+    grid-column:1
   }
   .section-space {
     padding-block:76px
@@ -713,7 +729,10 @@ svg {
     max-width:none
   }
   .closing-copy {
-    width:78%
+    display:block
+  }
+  .closing-copy .install-group {
+    margin-top:26px
   }
 }
 @media(max-width:700px) {
@@ -742,44 +761,28 @@ svg {
   .theme-label {
     font-size:11px
   }
-  .hero {
-    padding-top:35px
-  }
   .hero h1 {
     font-size:clamp(42px,8.5vw,58px);
     letter-spacing:-.06em;
     line-height:1.07;
     text-wrap:initial
   }
-  .hero-band {
-    margin-top:22px;
-    padding-bottom:126px
+  .hero-heading {
+    padding-top:32px;
+    padding-bottom:32px
   }
-  .hero-copy {
-    width:100%;
-    min-height:0;
-    padding:0 0 35px
+  .hero-bottom {
+    padding-block:28px 38px
   }
   .hero-description {
     font-size:16px;
     line-height:1.75
   }
   .hero-promise {
-    font-size:16px;
-    margin-top:24px
+    font-size:16px
   }
   .hero-color-field {
-    width:100%;
-    top:auto;
-    height:126px
-  }
-  .hero-color-field::before {
-    top:22px;
-    left:38%
-  }
-  .hero-color-field>span {
-    top:49%;
-    left:78%
+    height:10px
   }
   .install-group {
     gap:14px 10px;
@@ -895,33 +898,22 @@ svg {
     font-size:15px
   }
   .closing-section {
-    padding-bottom:92px
+    border-top-width:10px
   }
   .closing-copy {
-    width:100%;
-    padding:46px 0 38px
+    padding:38px 0 44px
   }
   .closing-copy h2 {
     font-size:43px
   }
   .closing-color-field {
-    width:100%;
-    top:auto;
-    height:92px
-  }
-  .closing-color-field::before {
-    top:20px;
-    left:55%
-  }
-  .closing-color-field>span {
-    top:45%;
-    bottom:0;
-    width:17%
+    height:10px
   }
   .site-footer {
     flex-wrap:wrap;
     gap:20px;
     padding-block:30px;
+    padding-inline:20px;
     min-height:0
   }
   .footer-wordmark {
@@ -963,195 +955,5 @@ svg {
   }
   *,*::before,*::after {
     transition:none!important
-  }
-}
-/* Broad, overlapping color planes carry the opening and closing content. */
-.hero {
-  padding-top:0;
-  background:var(--ochre-panel)
-}
-.hero-heading {
-  padding-top:54px;
-  padding-bottom:42px
-}
-.hero-band {
-  margin-top:0;
-  background:var(--sage-panel);
-  padding:0;
-  isolation:isolate
-}
-.hero-bottom {
-  padding-block:34px 42px
-}
-.hero-copy {
-  width:100%;
-  min-height:0;
-  padding:0;
-  background:transparent;
-  display:grid;
-  grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
-  column-gap:80px;
-  align-items:start
-}
-.hero-description {
-  grid-column:1;
-  grid-row:1 / 4;
-  max-width:650px
-}
-.hero-promise {
-  grid-column:2;
-  margin-top:0
-}
-.hero-copy .install-group {
-  grid-column:2;
-  margin-top:20px
-}
-.hero-color-field {
-  inset:auto 0 0;
-  width:100%;
-  height:12px;
-  background:var(--ochre);
-  z-index:0;
-  pointer-events:none
-}
-.hero-color-field::before {
-  inset:0 0 0 42%;
-  background:var(--petrol)
-}
-.hero-color-field>span {
-  inset:0 0 0 81%;
-  background:var(--clay)
-}
-.closing-section {
-  background:var(--ochre-panel);
-  padding:0;
-  border-top:16px solid var(--petrol)
-}
-.closing-copy {
-  width:100%;
-  padding:54px 0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:40px;
-  background:transparent
-}
-.closing-copy .install-group {
-  margin:0
-}
-.closing-color-field {
-  inset:auto 0 0;
-  width:100%;
-  height:12px;
-  background:var(--clay);
-  z-index:0;
-  pointer-events:none
-}
-.closing-color-field::before {
-  inset:0 25% 0 0;
-  background:var(--ochre)
-}
-.closing-color-field>span {
-  inset:0 0 0 75%;
-  width:auto;
-  background:var(--petrol)
-}
-.site-footer {
-  width:100%;
-  max-width:none;
-  padding-inline:max(56px,calc((100% - 1280px)/2));
-  background:var(--sage-panel)
-}
-@media(min-width:1600px) {
-  .hero {
-    padding-top:0
-  }
-  .hero-heading {
-    padding-top:70px
-  }
-}
-@media(max-width:1150px) {
-  .hero-copy {
-    column-gap:40px;
-    grid-template-columns:1.1fr 1fr
-  }
-  .site-footer {
-    padding-inline:36px
-  }
-  .closing-copy {
-    gap:28px
-  }
-}
-@media(max-width:850px) {
-  .hero-copy {
-    grid-template-columns:1fr;
-    gap:0
-  }
-  .hero-description {
-    grid-column:1;
-    grid-row:auto
-  }
-  .hero-promise {
-    grid-column:1;
-    margin-top:24px
-  }
-  .hero-copy .install-group {
-    grid-column:1
-  }
-  .closing-copy {
-    display:block
-  }
-  .closing-copy .install-group {
-    margin-top:26px
-  }
-}
-@media(max-width:700px) {
-  .hero-heading {
-    padding-top:32px;
-    padding-bottom:32px
-  }
-  .hero-band {
-    padding:0
-  }
-  .hero-bottom {
-    padding-block:28px 38px
-  }
-  .hero-copy {
-    width:100%;
-    padding:0
-  }
-  .hero-color-field {
-    height:10px;
-    inset:auto 0 0;
-    width:100%
-  }
-  .hero-color-field::before {
-    inset:0 0 0 42%
-  }
-  .hero-color-field>span {
-    inset:0 0 0 81%
-  }
-  .closing-section {
-    padding:0;
-    border-top-width:10px
-  }
-  .closing-copy {
-    padding:38px 0 44px;
-    width:100%
-  }
-  .closing-color-field {
-    height:10px;
-    inset:auto 0 0;
-    width:100%
-  }
-  .closing-color-field::before {
-    inset:0 25% 0 0
-  }
-  .closing-color-field>span {
-    inset:0 0 0 75%;
-    width:auto
-  }
-  .site-footer {
-    padding-inline:20px
   }
 }
