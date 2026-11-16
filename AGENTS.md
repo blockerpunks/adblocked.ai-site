@@ -5,9 +5,8 @@ Marketing site for **adblocked.ai**. The browser extension lives in a separate r
 ## Overview
 
 - Plain static site in `site/`: one `index.html`, `styles.css`, and small vanilla JS files. No build step, no dependencies, no package manager.
-- `.github/workflows/deploy.yml` uploads `site/` to GitHub Pages on pushes to `main` that touch `site/**`. Only `site/` is published.
-- Staging: https://blockerpunks.github.io/adblocked.ai-site/. Production (https://adblocked.ai) is still served from `alchemydc/aegis` until the domain is moved.
-- Use relative asset paths so the site works both under the staging subpath and at the domain root.
+- `.github/workflows/deploy.yml` uploads `site/` to GitHub Pages on pushes to `main` that touch `site/**`. Only `site/` is published, straight to production at https://adblocked.ai (there is no staging; https://blockerpunks.github.io/adblocked.ai-site/ redirects there).
+- Use relative asset paths so the site works at any base path.
 - Local preview: `python3 -m http.server -d site 8000 --bind 127.0.0.1`
 
 ## Constraints
