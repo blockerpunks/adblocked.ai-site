@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="How Adblocked AI protects your privacy, what the extension stores on your device, and how to inspect its security.">
+  <title>Privacy &amp; Security · Adblocked AI</title>
+  <link rel="icon" href="../assets/favicon.ico" sizes="any">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../theme-init.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../config.js" defer></script>
+  <script src="../app.js" defer></script>
+  <link rel="stylesheet" href="../privacy-security.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="wordmark" href="../" aria-label="Adblocked AI home">[-] Adblocked AI</a>
+      <nav class="navigation" aria-label="Main navigation">
+        <a href="../#how-it-works">How It Works</a>
+        <a href="../#philosophy">Design Philosophy</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" hidden>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.6 14.6A9 9 0 0 1 9.4 3.4 9 9 0 1 0 20.6 14.6Z"/></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="3.7"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <span class="theme-label" aria-hidden="true">Dark</span>
+        </button>
+        <div class="header-installs">
+          <a class="install-button install-button-small" role="link" aria-label="Install for Chrome" aria-disabled="true" aria-describedby="header-chrome-note" tabindex="0" data-install="chrome">Chrome <span aria-hidden="true">↗</span></a>
+          <a class="install-button install-button-small install-button-secondary" role="link" aria-label="Install for Firefox" aria-disabled="true" aria-describedby="header-firefox-note" tabindex="0" data-install="firefox">Firefox <span aria-hidden="true">↗</span></a>
+          <span class="sr-only" id="header-chrome-note" data-install-note="chrome">Chrome link coming soon.</span>
+          <span class="sr-only" id="header-firefox-note" data-install-note="firefox">Firefox link coming soon.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="privacy-page">
+    <header class="privacy-heading">
+      <div class="privacy-wrap">
+        <p class="privacy-date">Last updated <time datetime="2026-11-17">2026-11-17</time></p>
+        <h1>Privacy &amp; Security</h1>
+        <p class="privacy-intro">Adblocked AI hides ads on ChatGPT. We built it so that we never receive any of your data. There is no account, no analytics, and no server for your data to go to.</p>
+      </div>
+    </header>
+    <div class="privacy-wrap privacy-content">
+      <figure class="privacy-response">
+        <pre><code>GET /your-data
+<span>204 No Content</span></code></pre>
+        <figcaption>Everything we receive from you, in full.</figcaption>
+      </figure>
+      <section aria-labelledby="extension-title">
+        <h2 id="extension-title">The Browser Extension</h2>
+        <h3>What it stores</h3>
+        <p>The extension keeps a few things in your browser’s local extension storage:</p>
+        <ul>
+          <li>whether blocking is turned on or off</li>
+          <li>your whitelist, the sites you’ve added in Settings where blocking is turned off</li>
+          <li>how many ads it has hidden, in total and per site (for example, chatgpt.com)</li>
+        </ul>
+        <p>This data stays on your device. It is not synced to your browser account and never sent to us or anyone else. You can reset the counter in Settings, and removing the extension deletes all of it.</p>
+        <h3>What it does on ChatGPT</h3>
+        <p>The extension only runs on chatgpt.com. There, it adds a style rule that hides known ad elements and counts how many it hid. It does not read, store, or send your conversations or anything else on the page.</p>
+      </section>
+      <section class="privacy-promises" aria-labelledby="never-title">
+        <h2 id="never-title">What it never does</h2>
+        <ul>
+          <li>It makes no network requests. The blocking rules are bundled inside the extension.</li>
+          <li>It collects no analytics, browsing history or usage data.</li>
+          <li>It does not load or run code from the internet.</li>
+        </ul>
+      </section>
+      <section aria-labelledby="permissions-title">
+        <h2 id="permissions-title">Permissions</h2>
+        <dl>
+          <dt>Storage</dt>
+          <dd>To save the settings and counts listed above.</dd>
+          <dt>Access to chatgpt.com</dt>
+          <dd>To hide ads on ChatGPT pages. It has no access to any other site.</dd>
+        </dl>
+      </section>
+      <section aria-labelledby="website-title">
+        <h2 id="website-title">This Website</h2>
+        <p>The adblocked.ai site is a static site with no analytics, no cookies and no third-party scripts or fonts. If you switch to dark mode, that choice is saved in your browser so the site remembers it; it is never sent to us.</p>
+        <p>The site is hosted on GitHub Pages. GitHub, as the host, may log visitors’ IP addresses for security purposes under its own privacy statement. We do not receive or use those logs.</p>
+      </section>
+      <section aria-labelledby="security-title">
+        <h2 id="security-title">Security</h2>
+        <p>Don’t take our word for it. Unlike the AI it works on, adblocked.ai lets you view source. The extension is open source under the MIT license, so anyone can check that it does what this page says: <a href="https://github.com/blockerpunks/adblocked.ai-plugin" target="_blank" rel="noopener noreferrer">github.com/blockerpunks/adblocked.ai-plugin</a> (opens in a new tab)</p>
+        <p>The extension’s Settings page shows its version and the exact code commit it was built from, so you can match your installed copy against a public release.</p>
+        <h3>Changes</h3>
+        <p>If we ever add a feature that sends data anywhere, it will be described here before it ships, and this page’s date will change.</p>
+        <p>Blockerpunks have worked on privacy since the web was grey backgrounds and blue links. This page is short because there is so little to disclose, and we intend to keep it that way. Contact/Questions: <a href="mailto:blockerpunks@gmail.com">blockerpunks@gmail.com</a>.</p>
+      </section>
+      <figure class="privacy-quote">
+        <blockquote>“Privacy is necessary for an open society in the electronic age.”</blockquote>
+        <figcaption>Eric Hughes, <cite>A Cypherpunk’s Manifesto</cite>, 1993</figcaption>
+      </figure>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <a class="wordmark footer-wordmark" href="../" aria-label="Adblocked AI home">[-] Adblocked AI</a>
+    <p>Copyright 2026</p>
+    <a class="footer-policy" href="/privacy-security" aria-current="page">Privacy &amp; Security</a>
+    <a class="credit" href="https://github.com/blockerpunks" target="_blank" rel="noopener noreferrer">Brought to you by Blockerpunks <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+  </footer>
+</body>
+</html>
