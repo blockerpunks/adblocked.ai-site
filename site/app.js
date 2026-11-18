@@ -11,7 +11,7 @@
     toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
     label.textContent = isDark ? 'Light' : 'Dark';
     toggle.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
-    themeColor.content = isDark ? '#141615' : '#ffffff';
+    themeColor.content = isDark ? '#0f1e22' : '#ffffff';
   }
 
   toggle.hidden = false;
