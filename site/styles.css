@@ -27,20 +27,21 @@
 }
 :root[data-theme="dark"] {
   color-scheme:dark;
-  --bg:#141615;
-  --ink:#f2f3ed;
-  --muted:#b1b8b0;
-  --soft:#1c211e;
-  --line:#3c4740;
-  --inverse:#141615;
+  --bg:#0f1e22;
+  --ink:#eef0e8;
+  --muted:#a8b8b6;
+  --soft:#132830;
+  --line:#2b444b;
+  --inverse:#0f1e22;
   --focus:#9bbaff;
-  --petrol:#315660;
-  --ochre:#b59660;
-  --clay:#9e6b56;
-  --sage-panel:#263832;
-  --ochre-panel:#393224;
-  --clay-panel:#3c2e28;
-  --heading-accent:#b7cfca
+  --petrol:#5a97a6;
+  --ochre:#e2bb6c;
+  --clay:#d98a6c;
+  --sage:#a6cdb9;
+  --sage-panel:#15303a;
+  --ochre-panel:#1b4250;
+  --clay-panel:#15303a;
+  --heading-accent:#e2bb6c
 }
 * {
   box-sizing:border-box
@@ -439,6 +440,9 @@ svg {
 .comparison-after {
   clip-path:inset(0 0 0 var(--position))
 }
+[data-theme="dark"] .comparison-image {
+  filter:brightness(.86)
+}
 .comparison-divider {
   position:absolute;
   inset-block:0;
@@ -556,6 +560,19 @@ svg {
 }
 .principle p {
   max-width:380px
+}
+/* Dark ochre and clay fills turn brown, so dark chips carry the hue in their text. */
+[data-theme="dark"] .step h3,[data-theme="dark"] .principle h3 {
+  background:var(--sage-panel);
+  color:var(--sage)
+}
+[data-theme="dark"] .step:nth-child(2) h3,[data-theme="dark"] .principle:nth-child(2) h3 {
+  background:var(--sage-panel);
+  color:var(--ochre)
+}
+[data-theme="dark"] .step:nth-child(3) h3,[data-theme="dark"] .principle:nth-child(3) h3 {
+  background:var(--sage-panel);
+  color:var(--clay)
 }
 .closing-section {
   position:relative;

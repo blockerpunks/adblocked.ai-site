@@ -78,7 +78,7 @@ function assertTheme(page, theme) {
   assert.equal(page.label.textContent, dark ? 'Light' : 'Dark');
   assert.equal(page.toggle.getAttribute('aria-label'), dark ? 'Switch to light mode' : 'Switch to dark mode');
   assert.equal(page.toggle.title, page.toggle.getAttribute('aria-label'));
-  assert.equal(page.color.content, dark ? '#141615' : '#ffffff');
+  assert.equal(page.color.content, dark ? '#0f1e22' : '#ffffff');
   assert.equal(page.toggle.hidden, false);
 }
 function assertBrowser(page, browser, url = null) {
