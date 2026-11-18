@@ -22,7 +22,8 @@
 .privacy-content dd { margin:0; }
 .privacy-content a { text-decoration:underline; text-underline-offset:4px; overflow-wrap:anywhere; }
 .privacy-content a:hover { color:var(--heading-accent); }
-.privacy-quote { margin:56px 0 0; padding-top:32px; border-top:1px solid var(--line); }
+.privacy-closing { margin-top:56px; padding-top:32px; border-top:1px solid var(--line); }
+.privacy-quote { margin:32px 0 0; }
 .privacy-quote blockquote { margin:0 0 16px; font-size:26px; line-height:1.45; letter-spacing:-.025em; }
 .privacy-quote figcaption { font-size:14px; color:var(--muted); }
 .privacy-quote cite { font-style:normal; }
