@@ -4,7 +4,7 @@ Marketing site for **adblocked.ai**. The browser extension lives in a separate r
 
 ## Overview
 
-- Plain static site in `site/`: one `index.html`, `styles.css`, and small vanilla JS files. No build step, no dependencies, no package manager.
+- Plain static site in `site/`: a home `index.html`, `privacy-security/index.html`, shared `styles.css`, and small vanilla JS files. No build step, no dependencies, no package manager.
 - `.github/workflows/deploy.yml` uploads `site/` to GitHub Pages on pushes to `main` that touch `site/**`. Only `site/` is published, straight to production at https://adblocked.ai (there is no staging; https://blockerpunks.github.io/adblocked.ai-site/ redirects there).
 - Use relative asset paths so the site works at any base path.
 - Local preview: `python3 -m http.server -d site 8000 --bind 127.0.0.1`
@@ -21,3 +21,5 @@ Marketing site for **adblocked.ai**. The browser extension lives in a separate r
 - Run regression checks with `node tests/offline-logic-tests.cjs` and `node tests/comparison-tests.cjs` (Node is needed only for checks, not for the website).
 - Theme: light on first visit regardless of OS setting. The manual toggle is stored in localStorage key `adblocked-ai-theme`. `theme-init.js` loads synchronously in `<head>` to apply it before render and must stay there.
 - `comparison.js` drives the before/after slider (pointer, touch, keyboard). Without JS a static 50/50 split shows. The screenshots in `site/assets/chatgpt-{before,after}.webp` were copied from the Astro site.
+
+- Privacy & Security: `site/privacy-security/index.html` uses the shared header, footer, theme, and bundled font, plus `site/privacy-security.css`. The footer links to `/privacy-security`; GitHub Pages serves the directory index with its normal trailing-slash redirect. Preserve the supplied policy copy and date unless explicitly asked to change them.

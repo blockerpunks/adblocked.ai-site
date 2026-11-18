@@ -974,3 +974,11 @@ svg {
     transition:none!important
   }
 }
+
+/* Shared footer navigation. */
+.site-footer { flex-wrap:wrap; padding-block:30px; }
+.footer-policy { font-size:12px; padding-block:10px; }
+.footer-policy:hover,.footer-policy[aria-current="page"] {
+  text-decoration:underline;
+  text-underline-offset:5px;
+}

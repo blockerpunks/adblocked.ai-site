@@ -1,0 +1,38 @@
+/* Privacy page: shared typography and palette, with a comfortable reading measure. */
+.privacy-wrap { width:min(740px,calc(100% - 112px)); margin-inline:auto; }
+.privacy-heading { background:var(--ochre-panel); padding:72px 0 64px; }
+.privacy-date { color:var(--muted); font-size:13px; line-height:1.5; margin-bottom:22px; }
+.privacy-heading h1 { font-size:clamp(38px,5vw,64px); line-height:1.06; letter-spacing:-.045em; font-weight:600; }
+.privacy-intro { font-size:20px; line-height:1.65; margin-top:28px; }
+.privacy-content { padding-top:40px; padding-bottom:80px; font-size:17px; line-height:1.75; }
+.privacy-response { margin:0 0 56px; padding:28px 32px; background:var(--sage-panel); border-left:4px solid var(--petrol); }
+.privacy-response pre { font-family:inherit; margin:0 0 14px; white-space:pre-wrap; }
+.privacy-response code { font-family:inherit; font-size:18px; line-height:1.8; }
+.privacy-response code span { font-weight:650; color:var(--heading-accent); }
+.privacy-response figcaption { font-size:14px; color:var(--muted); }
+.privacy-content section { margin-top:48px; }
+.privacy-content h2 { font-size:30px; line-height:1.2; letter-spacing:-.035em; font-weight:600; margin-bottom:24px; }
+.privacy-content h3,.privacy-content dt { font-size:18px; line-height:1.5; font-weight:650; margin-top:28px; margin-bottom:10px; }
+.privacy-content p+p { margin-top:20px; }
+.privacy-content ul { margin:16px 0 24px; padding-left:23px; }
+.privacy-content li { padding-left:5px; margin:10px 0; }
+.privacy-promises { background:var(--clay-panel); padding:30px 32px; }
+.privacy-promises ul { margin-bottom:0; }
+.privacy-content dl { margin:0; }
+.privacy-content dd { margin:0; }
+.privacy-content a { text-decoration:underline; text-underline-offset:4px; overflow-wrap:anywhere; }
+.privacy-content a:hover { color:var(--heading-accent); }
+.privacy-closing { margin-top:56px; padding-top:32px; border-top:1px solid var(--line); }
+.privacy-quote { margin:32px 0 0; }
+.privacy-quote blockquote { margin:0 0 16px; font-size:26px; line-height:1.45; letter-spacing:-.025em; }
+.privacy-quote figcaption { font-size:14px; color:var(--muted); }
+.privacy-quote cite { font-style:normal; }
+@media(max-width:700px) {
+  .privacy-wrap { width:calc(100% - 40px); }
+  .privacy-heading { padding:44px 0 36px; }
+  .privacy-intro { font-size:18px; }
+  .privacy-content { font-size:16px; padding-top:28px; padding-bottom:52px; }
+  .privacy-content h2 { font-size:27px; }
+  .privacy-response,.privacy-promises { padding:24px; }
+  .privacy-quote blockquote { font-size:23px; }
+}
