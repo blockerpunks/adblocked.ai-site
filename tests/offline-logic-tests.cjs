@@ -154,12 +154,15 @@ test('cross-tab changes update theme and controls; unrelated keys ignored', () =
   page.window.fire('storage', { key: null, newValue: null }); assertTheme(page, 'light');
 });
 test('missing configuration keeps all six CTAs disabled', () => assertDisabled(loadPage()));
-test('delivered configuration has two empty destinations and no enabled CTA', () => {
+test('delivered configuration enables only the live Firefox listing', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(base, 'config.js'), 'utf8'), context);
+  const firefoxUrl = 'https://addons.mozilla.org/firefox/addon/adblocked-ai/';
   assert.equal(context.window.ADBLOCKED_CONFIG.chromeWebStoreUrl, '');
-  assert.equal(context.window.ADBLOCKED_CONFIG.firefoxAddonsUrl, '');
-  assertDisabled(loadPage({ config: context.window.ADBLOCKED_CONFIG }));
+  assert.equal(context.window.ADBLOCKED_CONFIG.firefoxAddonsUrl, firefoxUrl);
+  const page = loadPage({ config: context.window.ADBLOCKED_CONFIG });
+  assertBrowser(page, 'chrome');
+  assertBrowser(page, 'firefox', firefoxUrl);
 });
 const invalidConfigs = [
   ['empty string', ''], ['whitespace', '   '], ['missing value', undefined], ['null value', null], ['non-string', 42],
