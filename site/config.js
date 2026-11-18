@@ -7,5 +7,5 @@
 // URL validation checks format only; it does not verify a listing's ownership or existence.
 window.ADBLOCKED_CONFIG = Object.freeze({
   chromeWebStoreUrl: '',
-  firefoxAddonsUrl: ''
+  firefoxAddonsUrl: 'https://addons.mozilla.org/firefox/addon/adblocked-ai/'
 });
