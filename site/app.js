@@ -42,7 +42,7 @@
       if (url.protocol !== 'https:' || url.port || url.username || url.password) return null;
       if (browser === 'chrome') {
         if (url.hostname !== 'chromewebstore.google.com' ||
-            !/^\/detail\/[a-z0-9_-]+\/[a-p]{32}\/?$/i.test(url.pathname) ||
+            !/^\/detail\/(?:[a-z0-9_-]+\/)?[a-p]{32}\/?$/i.test(url.pathname) ||
             /[A-Z]/.test(url.pathname.split('/').filter(Boolean).pop())) return null;
       } else if (browser === 'firefox') {
         if (url.hostname !== 'addons.mozilla.org' ||
