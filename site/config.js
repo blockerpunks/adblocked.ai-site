@@ -6,6 +6,6 @@
 // Firefox URLs without the locale segment are also accepted.
 // URL validation checks format only; it does not verify a listing's ownership or existence.
 window.ADBLOCKED_CONFIG = Object.freeze({
-  chromeWebStoreUrl: 'https://chromewebstore.google.com/detail/ikolncpmbfbkfmbmkfmcmkddnmnaplhc?utm_source=item-share-cb',
+  chromeWebStoreUrl: 'https://chromewebstore.google.com/detail/ikolncpmbfbkfmbmkfmcmkddnmnaplhc',
   firefoxAddonsUrl: 'https://addons.mozilla.org/firefox/addon/adblocked-ai/'
 });

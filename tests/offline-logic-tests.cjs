@@ -154,14 +154,15 @@ test('cross-tab changes update theme and controls; unrelated keys ignored', () =
   page.window.fire('storage', { key: null, newValue: null }); assertTheme(page, 'light');
 });
 test('missing configuration keeps all six CTAs disabled', () => assertDisabled(loadPage()));
-test('delivered configuration enables only the live Firefox listing', () => {
+test('delivered configuration enables both live listings', () => {
   const context = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(base, 'config.js'), 'utf8'), context);
+  const chromeUrl = 'https://chromewebstore.google.com/detail/ikolncpmbfbkfmbmkfmcmkddnmnaplhc';
   const firefoxUrl = 'https://addons.mozilla.org/firefox/addon/adblocked-ai/';
-  assert.equal(context.window.ADBLOCKED_CONFIG.chromeWebStoreUrl, '');
+  assert.equal(context.window.ADBLOCKED_CONFIG.chromeWebStoreUrl, chromeUrl);
   assert.equal(context.window.ADBLOCKED_CONFIG.firefoxAddonsUrl, firefoxUrl);
   const page = loadPage({ config: context.window.ADBLOCKED_CONFIG });
-  assertBrowser(page, 'chrome');
+  assertBrowser(page, 'chrome', chromeUrl);
   assertBrowser(page, 'firefox', firefoxUrl);
 });
 const invalidConfigs = [
@@ -177,12 +178,17 @@ const invalidConfigs = [
   ['long extension ID', syntheticStoreUrl + 'a'],
   ['wrong ID alphabet', syntheticStoreUrl.slice(0, -1) + 'z'],
   ['uppercase ID', syntheticStoreUrl.slice(0, -1) + 'A'],
-  ['missing slug', syntheticStoreUrl.replace('/test-only', '')],
   ['extra path segment', syntheticStoreUrl + '/extra'],
 ];
 for (const [name, value] of invalidConfigs) test(`Chrome ${name} URL stays disabled while Firefox stays available`, () => {
   const page = loadPage({ config: { chromeWebStoreUrl: value, firefoxAddonsUrl: syntheticFirefoxUrl } });
   assertBrowser(page, 'chrome');
+  assertBrowser(page, 'firefox', syntheticFirefoxUrl);
+});
+test('Chrome ID-only listing URL without a slug is accepted', () => {
+  const chrome = syntheticStoreUrl.replace('/test-only', '');
+  const page = loadPage({ config: { chromeWebStoreUrl: chrome, firefoxAddonsUrl: syntheticFirefoxUrl } });
+  assertBrowser(page, 'chrome', chrome);
   assertBrowser(page, 'firefox', syntheticFirefoxUrl);
 });
 const invalidFirefoxConfigs = [
